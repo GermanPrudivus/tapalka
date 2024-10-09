@@ -7,7 +7,7 @@ import components.Button;
 import components.Text;
 import constants.Size;
 import constants.Theme;
-import features.start.widgets.Lighting;
+import features.start.components.Lighting;
 
 public class StartPage {
     final Size size = new Size();

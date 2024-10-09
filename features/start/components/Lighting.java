@@ -1,4 +1,4 @@
-package features.start.widgets;
+package features.start.components;
 
 import java.awt.*;
 import javax.swing.*;
