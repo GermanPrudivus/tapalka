@@ -12,7 +12,11 @@ public class StartPage {
     final Size size = new Size();
     final Theme theme = new Theme();
 
-    private JFrame window = new JFrame("Tapalka");
+    private JFrame window;
+
+    public StartPage(JFrame window) {
+        this.window = window;
+    }
 
     public void openStartPage() {
         this.window.setSize(size.getWidth(), size.getHeight());
