@@ -5,8 +5,7 @@ import java.awt.*;
 
 import components.Button;
 import components.Text;
-import constants.Size;
-import constants.Theme;
+import constants.*;
 import features.start.components.Lighting;
 
 public class StartPage {

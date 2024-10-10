@@ -3,7 +3,7 @@ package features.start.components;
 import java.awt.*;
 import javax.swing.*;
 
-import constants.Theme;
+import constants.*;
 
 public class Lighting extends JPanel {
     final Theme theme = new Theme();
