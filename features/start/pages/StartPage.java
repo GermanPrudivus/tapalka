@@ -1,11 +1,13 @@
 package features.start.pages;
 
 import components.Button;
+import components.Lighting;
 import components.Text;
 import constants.*;
-import features.start.components.Lighting;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import javax.swing.*;
+import services.Navigator;
 
 public class StartPage {
     final Size size = new Size();
@@ -17,31 +19,23 @@ public class StartPage {
         this.window = window;
     }
 
-    public void openStartPage() {
-        this.window.setSize(size.getWidth(), size.getHeight());
-        this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.initializeContent();
-        this.window.setVisible(true);
-    }
-
-    private void initializeContent() {
+    public void initializeContent() {
         JLayeredPane background = new JLayeredPane();
         
         background.setBackground(theme.getBackgroundColor());
         
-        Lighting lighting = new Lighting();
-        lighting.setBounds((size.getWidth()/2) - 375, size.getHeight() - 170, 750, 340);
+        Lighting lighting = new Lighting(theme.getBlue(), new Point2D.Float(size.getWidth()/2, size.getHeight()));
+        lighting.setBounds(0, 0, size.getWidth(), size.getHeight());
         background.add(lighting, Integer.valueOf(0));
 
-        JPanel content = this.createContent();
+        JPanel content = this.createMainContent();
         content.setBounds(0, 0, size.getWidth(), size.getHeight());
         background.add(content, Integer.valueOf(1));
 
         this.window.add(background);
     }
 
-    private JPanel createContent() {
+    private JPanel createMainContent() {
         JPanel content = new JPanel();
         content.setOpaque(false);
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
@@ -50,7 +44,11 @@ public class StartPage {
         content.add(new Text("Welcome to the tapping", "Montserrat-SemiBold.ttf", 36f));
         content.add(new Text("game “Tapalka”", "Montserrat-SemiBold.ttf", 36f));
         content.add(Box.createRigidArea(new Dimension(0, 30)));
-        content.add(new Button("Start a new game"));
+
+        JButton startButton = new Button("Start a new game");
+        startButton.addActionListener(new Navigator(window));
+
+        content.add(startButton);
         content.add(Box.createVerticalGlue());
 
         return content;
