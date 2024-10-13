@@ -1,4 +1,4 @@
-package constants;
+package services;
 
 import java.awt.*;
 import java.io.IOException;

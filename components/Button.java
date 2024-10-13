@@ -3,8 +3,8 @@ package components;
 import java.awt.*;
 import javax.swing.*;
 
-import constants.CustomFontLoader;
 import constants.Theme;
+import services.CustomFontLoader;
 
 public class Button extends JButton {
     final Theme theme = new Theme();
@@ -28,11 +28,10 @@ public class Button extends JButton {
         this.setBackground(theme.getOnBackgroundColor());
     }
 
-    @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(theme.getOnBackgroundColor());
-        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
+        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
         super.paintComponent(g);
     }
 }

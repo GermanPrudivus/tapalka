@@ -3,8 +3,8 @@ package components;
 import java.awt.*;
 import javax.swing.*;
 
-import constants.CustomFontLoader;
 import constants.Theme;
+import services.CustomFontLoader;
 
 public class Text extends JLabel {
     final Theme theme = new Theme();
