@@ -85,9 +85,11 @@ public class TappingPage implements Page {
         tappingPanel = new TappingPanel(this.window);
         circle = new Circle(this.window, tappingPanel, this.counter, this.timer);
 
-        SwingUtilities.invokeLater(() -> circle.addCircleToPanel());
-        content.add(tappingPanel);
+        SwingUtilities.invokeLater(() -> {
+            circle.addCircleToPanel();
+        });
 
+        content.add(tappingPanel);
         return content;
     }
 
