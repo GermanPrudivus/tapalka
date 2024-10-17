@@ -57,9 +57,14 @@ public class FinalAnimation extends JPanel {
             skinDisplayPanel.setOpaque(false);
 
             skinDisplayPanel.setBackground(Color.blue);;
+<<<<<<< HEAD
     
             // Create and add the skin name (title) at the top
             Text titleLabel = new Text(skinCard.getName(), "Montserrat-Bold.ttf", 30f);
+=======
+
+            Text titleLabel = new Text(skinCard.SKIN_NAME, "Montserrat-Bold.ttf", 30f);
+>>>>>>> 70191b3 (i have finish the CS roullete apart and the final)
             //titleLabel.setFont(new Font("Montserrat", Font.BOLD, 24));
             titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -67,7 +72,8 @@ public class FinalAnimation extends JPanel {
 
             skinDisplayPanel.add(titleLabel);  // Add the title above
     
-            // Add some vertical space between the title and the image
+          
+            
             skinDisplayPanel.add(Box.createVerticalStrut(20));
 
             ImageIcon originalIcon = new ImageIcon(skinCard.getImage());
@@ -77,26 +83,25 @@ public class FinalAnimation extends JPanel {
             Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            // Create a JLabel with the scaled image
+         
             JLabel imageLabel = new JLabel(scaledIcon);
             imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);  // Center the image
             skinDisplayPanel.add(imageLabel);
     
-            // Add some space between the image and the color rectangle
             skinDisplayPanel.add(Box.createVerticalStrut(0));
     
-            // Add the custom skin display panel to the animPanel
+            
             animPanel.add(skinDisplayPanel);
         } else {
             System.out.println("Error: Selected skin is not an instance of Card.");
         }
     
-        // Add the award text and play again button
+      
         textAward();
     
         playAgain();
     
-        // Refresh the display
+
         repaint();
         revalidate();
     }
