@@ -1,12 +1,9 @@
 package components;
 
-import constants.CustomFontLoader;
+import common.CustomFontLoader;
 import constants.Theme;
 import java.awt.*;
 import javax.swing.*;
-
-import common.CustomFontLoader;
-import constants.Theme;
 
 public class Button extends JButton {
     final Theme theme = new Theme();

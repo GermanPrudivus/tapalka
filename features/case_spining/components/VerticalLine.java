@@ -1,11 +1,9 @@
 package features.case_spining.components;
 
-import constants.Size;
 import java.awt.*;
 import javax.swing.*;
 
 public class VerticalLine extends JPanel{
-    Size size = new Size();
 
     public VerticalLine() {
         this.setOpaque(false);
@@ -20,6 +18,6 @@ public class VerticalLine extends JPanel{
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(6, size.getHeight()/3); // Width of the line, height can be adjusted
+        return new Dimension(6, getHeight()/3); // Width of the line, height can be adjusted
     }
 }
