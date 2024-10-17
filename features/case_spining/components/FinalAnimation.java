@@ -57,8 +57,7 @@ public class FinalAnimation extends JPanel {
             skinDisplayPanel.setOpaque(false);
 
             skinDisplayPanel.setBackground(Color.blue);;
-    
-            // Create and add the skin name (title) at the top
+
             Text titleLabel = new Text(skinCard.SKIN_NAME, "Montserrat-Bold.ttf", 30f);
             //titleLabel.setFont(new Font("Montserrat", Font.BOLD, 24));
             titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -67,7 +66,8 @@ public class FinalAnimation extends JPanel {
 
             skinDisplayPanel.add(titleLabel);  // Add the title above
     
-            // Add some vertical space between the title and the image
+          
+            
             skinDisplayPanel.add(Box.createVerticalStrut(20));
 
             ImageIcon originalIcon = new ImageIcon(skinCard.SKIN_IMAGE);
@@ -77,26 +77,25 @@ public class FinalAnimation extends JPanel {
             Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            // Create a JLabel with the scaled image
+         
             JLabel imageLabel = new JLabel(scaledIcon);
             imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);  // Center the image
             skinDisplayPanel.add(imageLabel);
     
-            // Add some space between the image and the color rectangle
             skinDisplayPanel.add(Box.createVerticalStrut(0));
     
-            // Add the custom skin display panel to the animPanel
+            
             animPanel.add(skinDisplayPanel);
         } else {
             System.out.println("Error: Selected skin is not an instance of Card.");
         }
     
-        // Add the award text and play again button
+      
         textAward();
     
         playAgain();
     
-        // Refresh the display
+
         repaint();
         revalidate();
     }
