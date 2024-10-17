@@ -29,12 +29,19 @@ public class GameTimer extends JLabel implements ActionListener {
         this.timer.start();
     }
 
+    public void stopTimer() {
+        this.timer.stop();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        secondsLeft--;
-        this.setText(Integer.toString(secondsLeft));
+        SwingUtilities.invokeLater(() -> {
+            secondsLeft--;
+            this.setText(Integer.toString(secondsLeft));
+        });
 
         if(secondsLeft == 0) {
+            System.out.println("fff");
             new Navigator(this.window).navigateToLosePage();
             this.timer.stop();
         }

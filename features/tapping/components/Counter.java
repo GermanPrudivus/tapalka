@@ -25,9 +25,12 @@ public class Counter extends JLabel {
 
     public void setCount(int count) {
         this.count = count;
-        this.setText(count + " / 30");
+        
+        SwingUtilities.invokeLater(() -> {
+            this.setText(count + " / 30");
 
-        this.revalidate();
-        this.repaint();
+            this.revalidate();
+            this.repaint();
+        });
     }
 }

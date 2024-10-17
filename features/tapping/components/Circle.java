@@ -6,9 +6,13 @@ import java.awt.*;
 import javax.swing.*;
 
 import common.Navigator;
+import components.Text;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import constants.Theme;
 
@@ -17,6 +21,7 @@ public class Circle extends JPanel {
 
     private JFrame window;
     private JPanel panel;
+
     private Counter counter;
     private GameTimer timer;
     private Random random = new Random();
@@ -24,10 +29,15 @@ public class Circle extends JPanel {
     private int x;
     private int y;
 
+    private JLabel plusOneLabel;
+    private Timer plusOneTimer;
+
     public Circle(JFrame window, JPanel panel, Counter counter, GameTimer timer) {
         this.window = window;
         this.panel = panel;
+
         this.counter = counter;
+        this.timer = timer;
         
         this.setOpaque(false);
         this.setSize(new Dimension(75, 75));
@@ -35,7 +45,6 @@ public class Circle extends JPanel {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Circle clicked!");
                 onCircleClick();
             }
         });
@@ -45,26 +54,71 @@ public class Circle extends JPanel {
         System.out.println("size x: " + panel.getWidth());
         System.out.println("size y: " + panel.getHeight());
 
-        x = random.nextInt(panel.getWidth() - 2 * getWidth()) + getWidth();
-        y = random.nextInt(panel.getHeight() - 2 * getHeight()) + getHeight();
+        this.setCirclePosition();
 
         System.out.println();
         System.out.println("x: " + x);
         System.out.println("y: " + y);
+        
+        this.panel.add(this);
+    }
 
+    private void setCirclePosition() {
+        x = random.nextInt(panel.getWidth() - 4 * getWidth()) + getWidth();
+        y = random.nextInt(panel.getHeight() - 4 * getHeight()) + getHeight();
+    
         this.setBounds(x, y, getWidth(), getHeight());
-        panel.add(this);
     }
 
     private void onCircleClick() {
         int coinCount = this.counter.getCount() + 1;
-        System.out.println(coinCount);
 
         if (coinCount == 30) {
+            this.timer.stopTimer();
             new Navigator(this.window).navigateToLosePage();
         } else {
             counter.setCount(coinCount);
+
+            SwingUtilities.invokeLater(() -> {
+                this.showPlusOneText(x, y);
+                this.setCirclePosition();
+            });
         }
+    }
+
+    private void showPlusOneText(int x, int y) {
+        if (plusOneLabel != null && plusOneTimer != null) {
+            plusOneTimer.stop();
+            panel.remove(plusOneLabel);
+        }
+
+        plusOneLabel = new Text("+1", "Montserrat-SemiBold.ttf", 50f);
+        plusOneLabel.setBounds(x, y, 100, 100);
+        panel.add(plusOneLabel);
+        panel.repaint();
+
+        plusOneTimer = new Timer(40, new ActionListener() {
+            int opacity = 255;
+            int yPosition = y;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                opacity -= 10;
+                yPosition -= 2;
+
+                if (opacity <= 0) {
+                    plusOneTimer.stop();
+                    panel.remove(plusOneLabel);
+                    panel.repaint();
+                } else {
+                    plusOneLabel.setForeground(new Color(255, 255, 255, opacity));
+                    plusOneLabel.setLocation(x, yPosition);
+                    panel.repaint();
+                }
+            }
+        });
+
+        plusOneTimer.start();
     }
 
     protected void paintComponent(Graphics g) {
