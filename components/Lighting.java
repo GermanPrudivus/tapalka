@@ -6,13 +6,18 @@ import java.awt.geom.Point2D;
 
 public class Lighting extends JPanel {
     private Color color;
-    private Point2D.Float position;
+    private Point2D position;
 
-    public Lighting(Color color, Point2D.Float position) {
+    public Lighting(Color color, Point2D position) {
         this.color = color;
         this.position = position;
 
         setOpaque(false);
+    }
+
+    public void setPosition(Point2D position) {
+        this.position = position;
+        repaint();
     }
 
     @Override
