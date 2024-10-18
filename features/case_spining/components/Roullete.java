@@ -19,6 +19,7 @@ public final class Roullete extends JPanel{
     private static final int SKIN_HEIGHT = 200;
     private static final int SKIN_SPACING = 50; 
     private long startTime;
+    public JPanel blurOverlay; 
 
     public Roullete(FinalAnimation finalAnimation) {
         this.setLayout(null);
@@ -28,6 +29,14 @@ public final class Roullete extends JPanel{
 
         this.skinCardInitialise();  // Assign it here
         this.start();
+    }
+
+    private void setupBlurOverlay() {
+        blurOverlay = new JPanel();
+        blurOverlay.setBackground(new Color(0, 0, 0, 150)); // Semi-transparent black
+        blurOverlay.setBounds(0, 0, 1279, 800);
+        blurOverlay.setVisible(false); // Initially hidden
+        mainPanel.add(blurOverlay, Integer.valueOf(1)); // Add overlay on top of the skins
     }
 
 
@@ -86,7 +95,7 @@ public final class Roullete extends JPanel{
        currentIndex = number.nextInt(skinArray.length);  
 
         for (JPanel skin : skinArray) {
-            skin.setVisible(false); 
+            skin.setVisible(true); 
          }
 
 
@@ -100,6 +109,7 @@ public final class Roullete extends JPanel{
     }
 
     private void showFinalPanel(JPanel selectedSkinPanel) {
+        blurOverlay.setVisible(true);
         finalAnimation.UpdateSkinPanel(selectedSkinPanel);
         finalAnimation.setVisible(true);  
 
