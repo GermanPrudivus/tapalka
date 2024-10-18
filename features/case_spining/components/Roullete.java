@@ -4,12 +4,14 @@ import features.case_spining.components.skins.blue.*;
 import features.case_spining.components.skins.gold.*;
 import features.case_spining.components.skins.pink.*;
 import features.case_spining.components.skins.red.*;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
+
+
 public final class Roullete extends Card{
-    
     private JPanel[] skinArray;
     private final JPanel mainPanel;
     private Timer timer;
@@ -20,6 +22,7 @@ public final class Roullete extends Card{
     private static final int SKIN_HEIGHT = 200;
     private static final int SKIN_SPACING = 50; 
     private long startTime;
+    public JPanel blurOverlay; 
 
     public FinalAnimation finalAnimation;
 
@@ -30,7 +33,16 @@ public final class Roullete extends Card{
         this.finalAnimation = finalAnimation;  // Assign it here
         InitialiseSkins();
         mainPanel.setPreferredSize(new Dimension(800, 400));
+        setupBlurOverlay(); 
         start();
+    }
+
+    private void setupBlurOverlay() {
+        blurOverlay = new JPanel();
+        blurOverlay.setBackground(new Color(0, 0, 0, 150)); // Semi-transparent black
+        blurOverlay.setBounds(0, 0, 1279, 800);
+        blurOverlay.setVisible(false); // Initially hidden
+        mainPanel.add(blurOverlay, Integer.valueOf(1)); // Add overlay on top of the skins
     }
 
     public JPanel getMainPanel() {
@@ -104,7 +116,7 @@ public final class Roullete extends Card{
        currentIndex = number.nextInt(skinArray.length);  
 
         for (JPanel skin : skinArray) {
-            skin.setVisible(false); 
+            skin.setVisible(true); 
          }
 
 
@@ -118,6 +130,7 @@ public final class Roullete extends Card{
     }
 
     private void showFinalPanel(JPanel selectedSkinPanel) {
+        blurOverlay.setVisible(true);
         finalAnimation.UpdateSkinPanel(selectedSkinPanel);
         finalAnimation.setVisible(true);  
 

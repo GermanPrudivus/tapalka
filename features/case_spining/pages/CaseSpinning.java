@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 public class CaseSpinning {
     final Size size = new Size();
     final Theme theme = new Theme();
-
     
 
     public CaseSpinning(JFrame window) {
@@ -74,8 +73,14 @@ public class CaseSpinning {
         card.setOpaque(false);
 
         background.add(card, Integer.valueOf(0));
+        background.add(roullete.blurOverlay, Integer.valueOf(1));
+
         background.add(anim, Integer.valueOf(2));
         
+    
+
+
+
     
 
         background.setBounds(0, 0, size.getWidth(), size.getHeight());
@@ -84,6 +89,7 @@ public class CaseSpinning {
         window.add(BackColor);
 
     }
+
 
     public void HeadQuote(JPanel back) {
         JPanel HeadText = new JPanel();
