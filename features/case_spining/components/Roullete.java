@@ -13,8 +13,8 @@ public final class Roullete extends JPanel{
     private JPanel[] skinArray;
     private Timer timer;
     private int currentIndex = 0;
-    private int totalSpins = 5; // Number of complete spins
-    private int spinDurationPerSkin = 800; 
+    final int totalSpins = 5; // Number of complete spins
+    final int spinDurationPerSkin = 800; 
     private static final int SKIN_WIDTH = 300;
     private static final int SKIN_HEIGHT = 200;
     private static final int SKIN_SPACING = 50; 
@@ -101,11 +101,8 @@ public final class Roullete extends JPanel{
 
         skinArray[currentIndex].setBounds(this.getWidth() / 2 - SKIN_WIDTH / 2, this.getHeight() / 2 - SKIN_HEIGHT / 2, SKIN_WIDTH, SKIN_HEIGHT);
         skinArray[currentIndex].setVisible(true);
-
-      
         showFinalPanel(skinArray[currentIndex]);
-
-        
+  
     }
 
     private void showFinalPanel(JPanel selectedSkinPanel) {
