@@ -2,7 +2,6 @@ package features.case_spining.components;
 
 import components.Button;
 import components.Text;
-import constants.Theme;
 import features.case_spining.components.skins.Card;
 import java.awt.*;
 import javax.swing.*;
@@ -11,20 +10,16 @@ import javax.swing.*;
 
 public class FinalAnimation extends JPanel {
     public JPanel animPanel;
-    private int radius = 60;
+    final int radius = 60;
     private Button button;
-    final Theme theme = new Theme();
 
     public FinalAnimation() {
         this.animPanel = new JPanel();  
         this.animPanel.setLayout(new BoxLayout(this.animPanel, BoxLayout.Y_AXIS));  
         this.animPanel.setOpaque(false);  
-        this.animPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));  
         setOpaque(false);  
-
-       // add(Box.createVerticalGlue());  
         add(animPanel);  
         add(Box.createVerticalGlue());
 
@@ -32,11 +27,9 @@ public class FinalAnimation extends JPanel {
     }
 
     public void UpdateSkinPanel(JPanel selectRandomSkin) {
-        animPanel.removeAll();
         
         if (selectRandomSkin instanceof Card) {
             Card skinCard = (Card) selectRandomSkin;
-            
             
             JPanel skinDisplayPanel = new JPanel() {
                 @Override
@@ -56,11 +49,9 @@ public class FinalAnimation extends JPanel {
             skinDisplayPanel.setPreferredSize(new Dimension(200, 300));
             skinDisplayPanel.setOpaque(false);
 
-            skinDisplayPanel.setBackground(Color.blue);;
+            skinDisplayPanel.setBackground(Color.blue);
 
             Text titleLabel = new Text(skinCard.SKIN_NAME, "Montserrat-Bold.ttf", 30f);
-            //titleLabel.setFont(new Font("Montserrat", Font.BOLD, 24));
-            titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
             titleLabel.setForeground(Color.WHITE); 
 
@@ -79,7 +70,7 @@ public class FinalAnimation extends JPanel {
 
          
             JLabel imageLabel = new JLabel(scaledIcon);
-            imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);  // Center the image
+            imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);  //keeps the final animation correct
             skinDisplayPanel.add(imageLabel);
     
             skinDisplayPanel.add(Box.createVerticalStrut(0));
@@ -95,7 +86,6 @@ public class FinalAnimation extends JPanel {
     
         playAgain();
     
-
         repaint();
         revalidate();
     }
@@ -107,9 +97,7 @@ public class FinalAnimation extends JPanel {
         g.setColor(Color.BLACK);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
         g.setColor(Color.WHITE);
-    
         int borderThickness = 2; 
-
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, radius, radius);
         g.drawRoundRect(borderThickness / 2, borderThickness / 2, getWidth() - borderThickness, getHeight() - borderThickness, radius, radius);
      }
@@ -118,9 +106,7 @@ public class FinalAnimation extends JPanel {
 
     private void playAgain() {
         button = new Button("Play Again");
-
         animPanel.add(Box.createVerticalStrut(20));
-
         animPanel.add(button);
     }
 

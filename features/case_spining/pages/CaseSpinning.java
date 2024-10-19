@@ -38,12 +38,6 @@ public class CaseSpinning {
         background.setOpaque(false);
         background.setBackground(theme.getBlue());
         
-        
-
-        //Lighting lighting = new Lighting();
-        //lighting.setBounds((size.getWidth()/2) - 375, size.getHeight() - 170, 750, 340);
-        //background.add(lighting, Integer.valueOf(0));*/
-    
 
         JPanel verticalLine = new VerticalLine();
         int linex = (size.getWidth() - 2) / 2;
@@ -63,9 +57,7 @@ public class CaseSpinning {
     
         Roullete roullete = new Roullete(anim);
         JPanel card = roullete.getMainPanel();
-        int cardWidth = 300;
         int cardHeight = 200;
-        int cardX = (size.getWidth() - cardWidth) / 2; // Center horizontally
         int cardY = (size.getHeight() / 2) - cardHeight-30; // Position beneath vertical line
         card.setBounds(0, cardY, size.getWidth(), cardHeight);
  
@@ -74,15 +66,8 @@ public class CaseSpinning {
 
         background.add(card, Integer.valueOf(0));
         background.add(roullete.blurOverlay, Integer.valueOf(1));
-
         background.add(anim, Integer.valueOf(2));
         
-    
-
-
-
-    
-
         background.setBounds(0, 0, size.getWidth(), size.getHeight());
 
         BackColor.add(background);

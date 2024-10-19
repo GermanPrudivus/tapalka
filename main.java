@@ -2,10 +2,10 @@ import features.case_spining.pages.CaseSpinning;
 import javax.swing.*;
 
 class Game {
-    private JFrame window = new JFrame("Tapalka");
+    final JFrame window = new JFrame("Tapalka");
 
     public void startGame() {
-        //new StartPage(window).openStartPage();
+        //
         new CaseSpinning(window);
     }
 

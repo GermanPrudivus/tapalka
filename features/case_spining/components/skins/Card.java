@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Card extends JPanel{
 
     final Size size = new Size();
-    private JPanel skins;
+    final JPanel skins;
     public Color color ;
     public String SKIN_IMAGE;
     public String SKIN_NAME;
@@ -18,17 +18,12 @@ public class Card extends JPanel{
     public  Card(JPanel skins) {
         this.skins = skins;
         this.skins.setLayout(new BoxLayout(this.skins, BoxLayout.Y_AXIS));
-        this.setLayout(new BorderLayout());
         this.add(skins, BorderLayout.CENTER);
         setOpaque(false); 
         this.skins.setOpaque(false);
     }
     
-    
-   
-
-
-    
+        
 
     public void SkinCard() {
         this.skins.setOpaque(true);
@@ -66,8 +61,6 @@ public class Card extends JPanel{
         Text label = new Text(text, "Montserrat-SemiBold.ttf", 16f);
         label.setForeground(Color.WHITE);
         label.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-        
-
         
         this.skins.add(label);
         this.revalidate();

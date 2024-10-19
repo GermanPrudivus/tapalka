@@ -1,18 +1,17 @@
 package features.start.pages;
 
-import javax.swing.*;
-import java.awt.*;
-
 import components.Button;
 import components.Text;
 import constants.*;
 import features.start.components.Lighting;
+import java.awt.*;
+import javax.swing.*;
 
 public class StartPage {
     final Size size = new Size();
     final Theme theme = new Theme();
 
-    private JFrame window;
+    final JFrame window;
 
     public StartPage(JFrame window) {
         this.window = window;
@@ -30,7 +29,6 @@ public class StartPage {
         JLayeredPane background = new JLayeredPane();
         
         background.setBackground(theme.getBackgroundColor());
-        background.setOpaque(true);
         
         Lighting lighting = new Lighting();
         lighting.setBounds((size.getWidth()/2) - 375, size.getHeight() - 170, 750, 340);
