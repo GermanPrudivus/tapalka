@@ -77,12 +77,20 @@ public class TappingPage implements Page {
         content.setBorder(new EmptyBorder(70, 70, 70, 70));
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
-        content.add(new Header());
+        Header header = new Header();
+        header.setHorizontalAlignment(SwingConstants.CENTER);
+
+        header.setPreferredSize(new Dimension(this.window.getWidth(), 50));
+        header.setMinimumSize(new Dimension(this.window.getWidth(), 50));
+        header.setMaximumSize(new Dimension(this.window.getWidth(), 50));
+
+        content.add(header);
+        
         content.add(Box.createRigidArea(new Dimension(0, 40)));
         content.add(this.indicatorsPanel());
         content.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        tappingPanel = new TappingPanel(this.window);
+        tappingPanel = new TappingPanel();
         circle = new Circle(this.window, tappingPanel, this.counter, this.timer);
 
         SwingUtilities.invokeLater(() -> {

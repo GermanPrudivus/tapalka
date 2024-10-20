@@ -15,5 +15,6 @@ public class Text extends JLabel {
 
         this.setForeground(theme.getOnBackgroundColor());
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.setHorizontalAlignment(JLabel.CENTER);
     }
 }

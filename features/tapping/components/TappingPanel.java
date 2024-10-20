@@ -8,7 +8,7 @@ import constants.Theme;
 public class TappingPanel extends JPanel {
     final Theme theme = new Theme();
 
-    public TappingPanel(JFrame window) {
+    public TappingPanel() {
         this.setOpaque(false);
         this.setLayout(null);
     }
