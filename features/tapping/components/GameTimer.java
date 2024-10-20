@@ -41,8 +41,7 @@ public class GameTimer extends JLabel implements ActionListener {
         });
 
         if(secondsLeft == 0) {
-            System.out.println("fff");
-            new Navigator(this.window).navigateToLosePage();
+            new Navigator(this.window).navigateToLossPage();
             this.timer.stop();
         }
     }

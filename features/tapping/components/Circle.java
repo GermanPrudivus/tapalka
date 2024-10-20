@@ -51,15 +51,7 @@ public class Circle extends JPanel {
     }
 
     public void addCircleToPanel() {
-        System.out.println("size x: " + panel.getWidth());
-        System.out.println("size y: " + panel.getHeight());
-
         this.setCirclePosition();
-
-        System.out.println();
-        System.out.println("x: " + x);
-        System.out.println("y: " + y);
-        
         this.panel.add(this);
     }
 
@@ -75,7 +67,7 @@ public class Circle extends JPanel {
 
         if (coinCount == 30) {
             this.timer.stopTimer();
-            new Navigator(this.window).navigateToLosePage();
+            new Navigator(this.window).navigateToAwardingPage();
         } else {
             counter.setCount(coinCount);
 
@@ -95,7 +87,6 @@ public class Circle extends JPanel {
         plusOneLabel = new Text("+1", "Montserrat-SemiBold.ttf", 50f);
         plusOneLabel.setBounds(x, y, 100, 100);
         panel.add(plusOneLabel);
-        panel.repaint();
 
         plusOneTimer = new Timer(40, new ActionListener() {
             int opacity = 255;
@@ -109,12 +100,14 @@ public class Circle extends JPanel {
                 if (opacity <= 0) {
                     plusOneTimer.stop();
                     panel.remove(plusOneLabel);
-                    panel.repaint();
                 } else {
                     plusOneLabel.setForeground(new Color(255, 255, 255, opacity));
                     plusOneLabel.setLocation(x, yPosition);
-                    panel.repaint();
                 }
+
+                SwingUtilities.invokeLater(() -> {
+                    panel.repaint();
+                });
             }
         });
 
