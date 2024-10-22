@@ -1,4 +1,5 @@
 package features;
+
 import common.interfaces.Page;
 import features.case_spining.pages.CaseSpinningPage;
 import java.awt.Dimension;
