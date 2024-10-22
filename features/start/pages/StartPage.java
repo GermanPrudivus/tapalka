@@ -1,5 +1,7 @@
 package features.start.pages;
 
+import common.Navigator;
+import common.interfaces.Page;
 import components.Button;
 import components.Lighting;
 import components.Text;
@@ -7,9 +9,6 @@ import constants.Theme;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import javax.swing.*;
-
-import common.Navigator;
-import common.interfaces.Page;
 
 public class StartPage implements Page {
     final Theme theme = new Theme();

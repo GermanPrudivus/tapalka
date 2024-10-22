@@ -1,12 +1,12 @@
 package features.awarding.components;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import components.SkinCard;
 import constants.Constants;
 import constants.Theme;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class InspectionPanel extends JPanel {
     final Theme theme = new Theme();
@@ -35,7 +35,9 @@ public class InspectionPanel extends JPanel {
                 skin[1], 
                 skin[2], 
                 new Dimension(147, 174),
-                10
+                10,
+                new Dimension(120,90),
+                12f
             ));
         }
     }

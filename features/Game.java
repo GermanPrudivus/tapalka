@@ -1,13 +1,11 @@
 package features;
-import features.awarding.pages.AwardingPage;
-import features.start.pages.StartPage;
-import javax.swing.*;
 
 import common.interfaces.Page;
-
+import features.case_spining.pages.CaseSpinningPage;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import javax.swing.*;
 
 public class Game {
     private static Game instance;
@@ -35,8 +33,7 @@ public class Game {
 
     public void startGame() {
         this.customizeWindow();
-        this.setCurrentPage(new StartPage(this.window));
-        //this.setCurrentPage(new AwardingPage(this.window));
+        this.setCurrentPage(new CaseSpinningPage(this.window));
         
         this.window.addComponentListener(new ComponentAdapter() {
             @Override
