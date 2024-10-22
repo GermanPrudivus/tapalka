@@ -13,7 +13,7 @@ public class SkinCard extends JPanel {
     private String name;
     private Color color;
 
-    public SkinCard(String name, String image, String color, Dimension size, int padding) {
+    public SkinCard(String name, String image, String color, Dimension size, int padding, Dimension imageSize, float fontSize) {
         this.setOpaque(false);
         this.setBackgorundColor(color);
 
@@ -25,8 +25,8 @@ public class SkinCard extends JPanel {
         this.name = name;
         this.color = this.getBackground();
 
-        this.add(new Image(this.image, 120, 90), BorderLayout.NORTH);
-        this.add(new Text(this.name, "Montserrat-SemiBold.ttf", 12f), BorderLayout.SOUTH);
+        this.add(new Image(this.image, (int) imageSize.getWidth(), (int) imageSize.getHeight()), BorderLayout.NORTH);
+        this.add(new Text(this.name, "Montserrat-SemiBold.ttf", fontSize), BorderLayout.SOUTH);
     }
 
     private void setBackgorundColor(String color) {

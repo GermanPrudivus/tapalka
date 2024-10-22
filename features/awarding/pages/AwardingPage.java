@@ -109,7 +109,7 @@ public class AwardingPage implements Page {
         content.setOpaque(false);
 
         InspectionPanel inspectionPanel = new InspectionPanel();
-        inspectionPanel.setBounds(130, this.window.getHeight() - 452, 825, 412);
+        inspectionPanel.setBounds(130, this.window.getHeight() - 462, 825, 412);
         inspectionPanel.setVisible(false);
         content.add(inspectionPanel);
 

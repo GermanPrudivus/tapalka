@@ -1,5 +1,4 @@
 package features;
-import features.awarding.pages.AwardingPage;
 import features.start.pages.StartPage;
 import javax.swing.*;
 

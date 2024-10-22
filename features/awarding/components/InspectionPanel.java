@@ -31,11 +31,13 @@ public class InspectionPanel extends JPanel {
 
         for (String[] skin : skins) {
             this.add(new SkinCard(
-                skin[0], 
-                skin[1], 
-                skin[2], 
+                skin[0],
+                skin[1],
+                skin[2],
                 new Dimension(147, 174),
-                10
+                10,
+                new Dimension(120, 90),
+                12f
             ));
         }
     }
