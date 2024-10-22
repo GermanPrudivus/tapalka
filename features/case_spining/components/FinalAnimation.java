@@ -3,7 +3,6 @@ package features.case_spining.components;
 import components.Button;
 import components.SkinCard;
 import components.Text;
-import constants.Theme;
 import java.awt.*;
 import javax.swing.*;
 
@@ -32,7 +31,6 @@ public class FinalAnimation extends JPanel {
         if (selectRandomSkin instanceof SkinCard) {
             SkinCard skinCard = (SkinCard) selectRandomSkin;
             
-            
             JPanel skinDisplayPanel = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -51,17 +49,9 @@ public class FinalAnimation extends JPanel {
             skinDisplayPanel.setPreferredSize(new Dimension(200, 300));
             skinDisplayPanel.setOpaque(false);
 
-            skinDisplayPanel.setBackground(Color.blue);;
-<<<<<<< HEAD
-    
-            // Create and add the skin name (title) at the top
-            Text titleLabel = new Text(skinCard.getName(), "Montserrat-Bold.ttf", 30f);
-=======
+            skinDisplayPanel.setBackground(Color.blue);
 
-            Text titleLabel = new Text(skinCard.SKIN_NAME, "Montserrat-Bold.ttf", 30f);
->>>>>>> 70191b3 (i have finish the CS roullete apart and the final)
-            //titleLabel.setFont(new Font("Montserrat", Font.BOLD, 24));
-            titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            Text titleLabel = new Text(skinCard.getName(), "Montserrat-Bold.ttf", 30f);
             titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
             titleLabel.setForeground(Color.WHITE); 
 

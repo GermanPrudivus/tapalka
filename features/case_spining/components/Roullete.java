@@ -1,6 +1,7 @@
 package features.case_spining.components;
 import components.SkinCard;
 import constants.Constants;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.*;
 import javax.swing.*;
@@ -29,6 +30,7 @@ public final class Roullete extends JPanel{
 
         this.skinCardInitialise();  // Assign it here
         this.start();
+        this.setupBlurOverlay(); 
     }
 
     private void setupBlurOverlay() {
@@ -36,7 +38,7 @@ public final class Roullete extends JPanel{
         blurOverlay.setBackground(new Color(0, 0, 0, 150)); // Semi-transparent black
         blurOverlay.setBounds(0, 0, 1279, 800);
         blurOverlay.setVisible(false); // Initially hidden
-        mainPanel.add(blurOverlay, Integer.valueOf(1)); // Add overlay on top of the skins
+        this.add(blurOverlay, Integer.valueOf(1)); // Add overlay on top of the skins
     }
 
 
@@ -91,12 +93,12 @@ public final class Roullete extends JPanel{
     }
 
     private void SelectRandomSkin() {
-       Random number = new Random();
-       currentIndex = number.nextInt(skinArray.length);  
+        Random number = new Random();
+        currentIndex = number.nextInt(skinArray.length);  
 
         for (JPanel skin : skinArray) {
             skin.setVisible(true); 
-         }
+        }
 
 
         skinArray[currentIndex].setBounds(this.getWidth() / 2 - SKIN_WIDTH / 2, this.getHeight() / 2 - SKIN_HEIGHT / 2, SKIN_WIDTH, SKIN_HEIGHT);
