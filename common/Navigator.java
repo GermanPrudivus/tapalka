@@ -2,6 +2,7 @@ package common;
 
 import features.Game;
 import features.awarding.pages.AwardingPage;
+import features.case_spining.pages.CaseSpinningPage;
 import features.loss.pages.LossPage;
 import features.tapping.pages.TappingPage;
 import java.awt.event.ActionEvent;
@@ -24,7 +25,10 @@ public class Navigator implements ActionListener {
             case "Try again":
                 this.navigateToTappingPage();
                 break;
-            case "FreeSkin":
+            case "Free skin":
+                this.navigateToCaseSpinningPage();
+                break;
+            case "Play again":
                 this.navigateToTappingPage();
                 break;
             default:
@@ -38,6 +42,12 @@ public class Navigator implements ActionListener {
         gameInstance.setCurrentPage(new TappingPage(window));
     }
 
+    private void navigateToCaseSpinningPage() {
+        this.window.getContentPane().removeAll();
+        Game gameInstance = Game.getInstance();
+        gameInstance.setCurrentPage(new CaseSpinningPage(window));
+    }
+
     public void navigateToLossPage() {
         this.window.getContentPane().removeAll();
         Game gameInstance = Game.getInstance();
@@ -48,11 +58,5 @@ public class Navigator implements ActionListener {
         this.window.getContentPane().removeAll();
         Game gameInstance = Game.getInstance();
         gameInstance.setCurrentPage(new AwardingPage(window));
-    }
-
-    public void navigateToRulletePage() {
-        this.window.getContentPane().removeAll();
-        this.window.revalidate();
-        this.window.repaint();
     }
 }

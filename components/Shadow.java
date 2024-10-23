@@ -13,7 +13,7 @@ public class Shadow extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+        g2d.setComposite(AlphaComposite.SrcOver.derive(0.7f));
         g2d.setColor(getBackground());
         g2d.fillRect(0, 0, getWidth(), getHeight());
     }

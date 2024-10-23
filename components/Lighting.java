@@ -7,6 +7,15 @@ import java.awt.geom.Point2D;
 public class Lighting extends JPanel {
     private Color color;
     private Point2D position;
+    private int radiusFactor = 1;
+
+    public Lighting(Color color, Point2D position, int radiusFactor) {
+        this.color = color;
+        this.position = position;
+        this.radiusFactor = radiusFactor;
+
+        setOpaque(false);
+    }
 
     public Lighting(Color color, Point2D position) {
         this.color = color;
@@ -35,7 +44,7 @@ public class Lighting extends JPanel {
             new Color(0, 0, 0, 0)
         };
 
-        RadialGradientPaint radialGradient = new RadialGradientPaint(position, getHeight(), dist, colors);
+        RadialGradientPaint radialGradient = new RadialGradientPaint(position, getHeight() / this.radiusFactor, dist, colors);
         g2d.setPaint(radialGradient);
 
         g2d.fillRect(0, 0, getWidth(), getHeight());

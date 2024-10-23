@@ -68,7 +68,15 @@ public class AwardingPage implements Page {
 
             content.setBounds(0, 0, width, height);
             shadow.setBounds(0, 0, width, height);
+            
             skinInspection.setBounds(0, 0, width, height);
+            for(Component component : skinInspection.getComponents()){
+                if (component instanceof InspectionPanel) {
+                    component.setBounds(130, this.window.getHeight() - 462, 825, 412);
+                } else if (component instanceof QuestionButton) {
+                    component.setBounds(70, this.window.getHeight() - 120, 60, 60);
+                }
+            }
             
             background.revalidate();
             background.repaint();

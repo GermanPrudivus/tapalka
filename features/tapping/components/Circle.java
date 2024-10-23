@@ -56,8 +56,8 @@ public class Circle extends JPanel {
     }
 
     private void setCirclePosition() {
-        x = random.nextInt(panel.getWidth() - 4 * getWidth()) + getWidth();
-        y = random.nextInt(panel.getHeight() - 4 * getHeight()) + getHeight();
+        x = random.nextInt(panel.getWidth() - 2 * getWidth()) + getWidth();
+        y = random.nextInt(panel.getHeight() - 2 * getHeight()) + getHeight();
     
         this.setBounds(x, y, getWidth(), getHeight());
     }

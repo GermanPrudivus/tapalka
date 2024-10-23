@@ -1,8 +1,8 @@
 package features;
-import features.start.pages.StartPage;
 import javax.swing.*;
 
 import common.interfaces.Page;
+import features.start.pages.StartPage;
 
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
@@ -18,7 +18,7 @@ public class Game {
     private Page currentPage;
 
     private void customizeWindow() {
-        this.window.setMinimumSize(new Dimension(3 * WIDTH / 4, 3 * HEIGHT / 4));
+        this.window.setMinimumSize(new Dimension(6 * WIDTH / 7, 6 * HEIGHT / 7));
         this.window.setSize(WIDTH, HEIGHT);
         this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.window.setResizable(true);
@@ -34,8 +34,7 @@ public class Game {
 
     public void startGame() {
         this.customizeWindow();
-        this.setCurrentPage(new StartPage(this.window));
-        //this.setCurrentPage(new AwardingPage(this.window));
+        this.setCurrentPage(new StartPage(window));
         
         this.window.addComponentListener(new ComponentAdapter() {
             @Override

@@ -1,10 +1,9 @@
 package components;
 
+import constants.Theme;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import constants.Theme;
 
 public class SkinCard extends JPanel {
     final Theme theme = new Theme();
@@ -67,7 +66,7 @@ public class SkinCard extends JPanel {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(getBackground());
-        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
         super.paintComponent(g);
     }
 }
