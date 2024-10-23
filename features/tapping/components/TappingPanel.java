@@ -1,18 +1,20 @@
 package features.tapping.components;
 
+import constants.Theme;
 import java.awt.*;
 import javax.swing.*;
 
-import constants.Theme;
-
+// Tapping panel (Main gameplay panel)
 public class TappingPanel extends JPanel {
     final Theme theme = new Theme();
 
+    // Sets up the panel's parameters
     public TappingPanel() {
         this.setOpaque(false);
         this.setLayout(null);
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;

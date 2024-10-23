@@ -4,16 +4,16 @@ import common.interfaces.Page;
 import components.Header;
 import components.Lighting;
 import components.Shadow;
-import constants.*;
-import features.case_spining.components.SkinAwardingWindow;
+import constants.Theme;
 import features.case_spining.components.Roullete;
+import features.case_spining.components.SkinAwardingWindow;
 import features.case_spining.components.VerticalLine;
-
 import java.awt.*;
-import javax.swing.*;
 import java.awt.geom.Point2D;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+// Case Spinning Page (Case spinning animation and Skin Awarding widget)
 public class CaseSpinningPage implements Page {
     final Theme theme = new Theme();
 
@@ -26,6 +26,7 @@ public class CaseSpinningPage implements Page {
     private Shadow shadow;
     private SkinAwardingWindow awardingWindow;
 
+    // Sets the background for the page
     public CaseSpinningPage(JFrame window) {
         background = new JLayeredPane();
         background.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -65,31 +66,14 @@ public class CaseSpinningPage implements Page {
             lighting2.setBounds(0, 0, width, height);
             lighting2.setPosition(new Point2D.Float(width, height));
 
-            for (Component component : content.getComponents()) {
-                if (component instanceof JLayeredPane) {
-                    Component roullete = ((JLayeredPane) component).getComponentsInLayer(0)[0];
-                    int roulleteY = (component.getHeight() / 2 - 100);
-                    roullete.setBounds(0, roulleteY, component.getWidth(), 200);
-
-                    Component verticalLine = ((JLayeredPane) component).getComponentsInLayer(1)[0];
-                    int lineHeight = component.getHeight() / 2;
-                    int lineX = (component.getWidth() / 2) - 2;
-                    int lineY = (component.getHeight() / 2) - (lineHeight / 2);
-                    verticalLine.setBounds(lineX, lineY, 4, lineHeight);
-
-                    break;
-                }
-            }
-
-            shadow.setBounds(0, 0, this.window.getWidth(), this.window.getHeight());
-            awardingWindow.setBounds(this.window.getWidth() / 8, this.window.getHeight() / 8, 3 * this.window.getWidth() / 4, 3 * this.window.getHeight() / 4);
-            awardingWindow.resizeContent(3 * this.window.getWidth() / 4, 3 * this.window.getHeight() / 4);
+            this.resizeSkinAwardingWindow(width, height);
             
             content.setBounds(0, 0, width, height);
             content.repaint();
         }
     }
 
+    // Adds main content to the previously created background
     private JPanel createMainContent() {
         JPanel content = new JPanel();
         content.setOpaque(false);
@@ -103,6 +87,7 @@ public class CaseSpinningPage implements Page {
         return content;
     }
 
+    // Creates Roulette with the skin
     private JLayeredPane createRoulletPane() {
         JLayeredPane roulletePane = new JLayeredPane();
         roulletePane.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -131,16 +116,42 @@ public class CaseSpinningPage implements Page {
         return roulletePane;
     }
 
+    // Creates Skin Awarding window which appears after Roulette animation
     private void createSkinAwardingWindow() {
+        int width = this.window.getWidth();
+        int height = this.window.getHeight();
+
         shadow = new Shadow();
-        shadow.setBounds(0, 0, this.window.getWidth(), this.window.getHeight());
+        shadow.setBounds(0, 0, width, height);
         shadow.setVisible(false);
         background.add(shadow, Integer.valueOf(2));
 
         awardingWindow = new SkinAwardingWindow(this.window);
-        awardingWindow.setBounds(this.window.getWidth() / 8, this.window.getHeight() / 8, 3*this.window.getWidth()/4, 3*this.window.getHeight()/4); 
+        awardingWindow.setBounds(width / 8, height / 8, 3 * width / 4, 3 * height / 4); 
         awardingWindow.setVisible(false);
 
         background.add(awardingWindow, Integer.valueOf(3));
+    }
+
+    private void resizeSkinAwardingWindow(int width, int height) {
+        for (Component component : content.getComponents()) {
+            if (component instanceof JLayeredPane) {
+                Component roullete = ((JLayeredPane) component).getComponentsInLayer(0)[0];
+                int roulleteY = (component.getHeight() / 2 - 100);
+                roullete.setBounds(0, roulleteY, component.getWidth(), 200);
+
+                Component verticalLine = ((JLayeredPane) component).getComponentsInLayer(1)[0];
+                int lineHeight = component.getHeight() / 2;
+                int lineX = (component.getWidth() / 2) - 2;
+                int lineY = (component.getHeight() / 2) - (lineHeight / 2);
+                verticalLine.setBounds(lineX, lineY, 4, lineHeight);
+
+                break;
+            }
+        }
+
+        shadow.setBounds(0, 0, width, height);
+        awardingWindow.setBounds(width / 8, height / 8, 3 * width / 4, 3 * height / 4);
+        awardingWindow.resizeContent(3 * width / 4, 3 * height / 4);
     }
 }

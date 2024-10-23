@@ -1,10 +1,5 @@
 package features.loss.pages;
 
-import java.awt.*;
-import java.awt.geom.Point2D;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import common.Navigator;
 import common.interfaces.Page;
 import components.Button;
@@ -12,7 +7,12 @@ import components.Header;
 import components.Lighting;
 import components.Text;
 import constants.Theme;
+import java.awt.*;
+import java.awt.geom.Point2D;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
+// Loss page (Shiwn after user loses the game)
 public class LossPage implements Page {
     final Theme theme = new Theme();
 
@@ -21,6 +21,7 @@ public class LossPage implements Page {
     private Lighting lighting;
     private JPanel content;
 
+    // Sets the background of the page
     public LossPage(JFrame window) {
         background = new JLayeredPane();
         background.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -58,6 +59,7 @@ public class LossPage implements Page {
         }
     }
 
+    // Adds main content to the previously created background
     private JPanel createMainContent() {
         JPanel content = new JPanel();
         content.setOpaque(false);

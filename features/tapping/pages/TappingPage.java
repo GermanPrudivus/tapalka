@@ -1,18 +1,20 @@
 package features.tapping.pages;
 
-import java.awt.Dimension;
-import java.awt.geom.Point2D;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import common.interfaces.Page;
 import components.Header;
 import components.Lighting;
 import components.Text;
 import constants.Theme;
-import features.tapping.components.*;
+import features.tapping.components.Circle;
+import features.tapping.components.Counter;
+import features.tapping.components.GameTimer;
+import features.tapping.components.TappingPanel;
+import java.awt.Dimension;
+import java.awt.geom.Point2D;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
+// Tapping game page (Main gameplay page)
 public class TappingPage implements Page {
     final Theme theme = new Theme();
 
@@ -29,6 +31,7 @@ public class TappingPage implements Page {
     private TappingPanel tappingPanel;
     private Circle circle;
 
+    // Sets the background for the page
     public TappingPage(JFrame window) {
         background = new JLayeredPane();
         background.setSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -71,12 +74,14 @@ public class TappingPage implements Page {
         }
     }
 
+    // Adds main content to the previously created background
     private JPanel createMainContent() {
         JPanel content = new JPanel();
         content.setOpaque(false);
         content.setBorder(new EmptyBorder(70, 70, 70, 70));
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
+        // Creates the header for the page
         Header header = new Header();
         header.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -86,10 +91,12 @@ public class TappingPage implements Page {
 
         content.add(header);
         
+        // Adds a panel with the timer and coin counter
         content.add(Box.createRigidArea(new Dimension(0, 40)));
         content.add(this.indicatorsPanel());
         content.add(Box.createRigidArea(new Dimension(0, 20)));
 
+        // Adds the interactive game panel
         tappingPanel = new TappingPanel();
         circle = new Circle(this.window, tappingPanel, this.counter, this.timer);
 
@@ -101,10 +108,11 @@ public class TappingPage implements Page {
         return content;
     }
 
+    // Creates the panel with indicators: timer and coin counter
     private JPanel indicatorsPanel() {
         JPanel indicators = new JPanel();
         indicators.setOpaque(false);
-        indicators.setLayout(new BoxLayout(indicators , BoxLayout.X_AXIS));
+        indicators.setLayout(new BoxLayout(indicators, BoxLayout.X_AXIS));
 
         timer = new GameTimer(this.window);
         indicators.add(timer);

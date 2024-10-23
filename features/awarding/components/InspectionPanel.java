@@ -3,15 +3,16 @@ package features.awarding.components;
 import components.SkinCard;
 import constants.Constants;
 import constants.Theme;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+// Inspection Panel class (Displays all available skins in the case)
 public class InspectionPanel extends JPanel {
     final Theme theme = new Theme();
     final Constants constants = new Constants();
 
+    // Sets the panel's parameters
     public InspectionPanel() {
         this.setOpaque(false);
         this.setBackground(theme.getOnBackgroundColor());
@@ -26,6 +27,7 @@ public class InspectionPanel extends JPanel {
         this.addSkinCards();
     }
 
+    // Adds skin cards to the panel
     private void addSkinCards() {
         String[][] skins = constants.getSkins();
 
@@ -42,6 +44,7 @@ public class InspectionPanel extends JPanel {
         }
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(getBackground());

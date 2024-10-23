@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import javax.swing.*;
 
+// Start or Welcome page (First page)
 public class StartPage implements Page {
     final Theme theme = new Theme();
 
@@ -18,6 +19,7 @@ public class StartPage implements Page {
     private Lighting lighting;
     private JPanel content;
 
+    // Sets the background of the page
     public StartPage(JFrame window) {
         background = new JLayeredPane();
         background.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -55,6 +57,7 @@ public class StartPage implements Page {
         }
     }
 
+    // Adds main content to the previously created background
     private JPanel createMainContent() {
         JPanel content = new JPanel();
         content.setOpaque(false);

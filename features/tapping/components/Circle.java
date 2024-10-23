@@ -1,21 +1,17 @@
 package features.tapping.components;
 
-import java.util.Random;
-
-import java.awt.*;
-import javax.swing.*;
-
 import common.Navigator;
 import components.Text;
-
+import constants.Theme;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
+import javax.swing.*;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import constants.Theme;
-
+// Target class (Creates a circle that should be tapped)
 public class Circle extends JPanel {
     final Theme theme = new Theme();
 
@@ -32,6 +28,7 @@ public class Circle extends JPanel {
     private JLabel plusOneLabel;
     private Timer plusOneTimer;
 
+    // Sets the Circle parameters and stores necessary references
     public Circle(JFrame window, JPanel panel, Counter counter, GameTimer timer) {
         this.window = window;
         this.panel = panel;
@@ -50,11 +47,13 @@ public class Circle extends JPanel {
         });
     }
 
+    // Adds the circle to the tapping panel
     public void addCircleToPanel() {
         this.setCirclePosition();
         this.panel.add(this);
     }
 
+    // Sets random coordinates for the circle
     private void setCirclePosition() {
         x = random.nextInt(panel.getWidth() - 2 * getWidth()) + getWidth();
         y = random.nextInt(panel.getHeight() - 2 * getHeight()) + getHeight();
@@ -62,6 +61,7 @@ public class Circle extends JPanel {
         this.setBounds(x, y, getWidth(), getHeight());
     }
 
+    // Updates the state of the page when the circle is clicked
     private void onCircleClick() {
         int coinCount = this.counter.getCount() + 1;
 
@@ -78,16 +78,19 @@ public class Circle extends JPanel {
         }
     }
 
+    // Adds a visual hit indicator for the user
     private void showPlusOneText(int x, int y) {
         if (plusOneLabel != null && plusOneTimer != null) {
             plusOneTimer.stop();
             panel.remove(plusOneLabel);
         }
 
+        // Creates a hit indicator for the circle
         plusOneLabel = new Text("+1", "Montserrat-SemiBold.ttf", 50f);
         plusOneLabel.setBounds(x, y, 100, 100);
         panel.add(plusOneLabel);
 
+        // Animation for the indicator
         plusOneTimer = new Timer(40, new ActionListener() {
             int opacity = 255;
             int yPosition = y;
@@ -114,6 +117,7 @@ public class Circle extends JPanel {
         plusOneTimer.start();
     }
 
+    // Paints the circle
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();

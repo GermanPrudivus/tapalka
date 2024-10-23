@@ -3,13 +3,13 @@ package features.case_spining.components;
 import components.Shadow;
 import components.SkinCard;
 import constants.Constants;
-
-import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import javax.swing.*;
 import javax.swing.Timer;
 
+// Roulette animation (Roulette spinning animation)
 public final class Roullete extends JPanel {
     final Constants constants = new Constants();
 
@@ -27,6 +27,7 @@ public final class Roullete extends JPanel {
     private long startTime;
     private int offset;
 
+    // Sets the Roulette parameters and stores necessary references
     public Roullete(SkinAwardingWindow awardingWindow, Shadow shadow) {
         this.setLayout(null);
         this.setOpaque(false);
@@ -38,6 +39,7 @@ public final class Roullete extends JPanel {
         this.shadow = shadow;
     }
 
+    // Adds all Skins to the Roulette and shuffles them
     private void skinCardInitialise() {
         String[][] skins = constants.getSkins();
         List<JPanel> skinList = new ArrayList<>();
@@ -59,7 +61,7 @@ public final class Roullete extends JPanel {
         skinArray = skinList.toArray(new JPanel[0]);
     }
 
-    // Start the spin animation
+    // Starts the spin animation
     private void startAnimation() {
         startTime = System.currentTimeMillis(); 
         timer = new Timer(16, e -> spinAnimation());
@@ -88,7 +90,7 @@ public final class Roullete extends JPanel {
             this.add(skinArray[i]);
         }
 
-        // Stop the animation when progress reaches 1.0
+        // Stops the animation when progress reaches 1.0
         if (progress >= 1.0) {
             timer.stop();
             selectSkinInCenter();
@@ -98,33 +100,33 @@ public final class Roullete extends JPanel {
         this.revalidate();
     }
 
-    // This method is only used to simulate distance calculation
+    // This method is used to calculate the total distance for the spin
     private int calculateTotalDistance() {
         int fullSpinDistance = skinArray.length * (SKIN_WIDTH + SKIN_SPACING);
         return totalSpins * fullSpinDistance + SKIN_WIDTH / 2;
     }
 
-    // Calculate which skin is in the center of the screen
+    // Identifies which skin is in the center of the screen
     private void selectSkinInCenter() {
         int closestIndex = -1;
         int minDistanceToCenter = Integer.MAX_VALUE;
 
-        // Loop through all skins to find the one closest to the center
+        // Loops through all skins to find the one closest to the center
         for (int i = 0; i < skinArray.length; i++) {
             Rectangle bounds = skinArray[i].getBounds();
             int skinCenterX = bounds.x + bounds.width / 2;
 
-            // Calculate the distance from the skin's center to the center of the screen
+            // Calculates the distance from the skin's center to the center of the screen
             int distanceToCenter = Math.abs(skinCenterX - (getWidth() / 2));
 
-            // Track the skin closest to the center
+            // Tracks the skin closest to the center
             if (distanceToCenter < minDistanceToCenter) {
                 minDistanceToCenter = distanceToCenter;
                 closestIndex = i;
             }
         }
 
-        // If a skin is found in the center, select it and pass it to the awarding window
+        // If a skin is found in the center, selects it and passes it to the awarding window
         if (closestIndex != -1) {
             SkinCard selectedSkinPanel = (SkinCard) skinArray[closestIndex];
             System.out.println("Skin in center: " + selectedSkinPanel.getName());
@@ -133,7 +135,7 @@ public final class Roullete extends JPanel {
         }
     }
 
-    // Update the awarding window with the selected skin
+    // Updates the awarding window with the selected skin
     private void showFinalPanel(SkinCard selectedSkinPanel) {
         shadow.setVisible(true);
         awardingWindow.setVisible(true);

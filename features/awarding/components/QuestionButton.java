@@ -1,16 +1,15 @@
 package features.awarding.components;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.*;
-
 import common.CustomFontLoader;
 import components.Button;
 import components.Shadow;
 import constants.Theme;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
+// Question button class (Opens the inspection panel with skins)
 public class QuestionButton extends Button implements ActionListener {
     final Theme theme = new Theme();
     private boolean isActive = false;
@@ -18,6 +17,7 @@ public class QuestionButton extends Button implements ActionListener {
     private JPanel content;
     private Shadow shadow;
     
+    // Sets the button parameters and stores necessary references
     public QuestionButton(String text, JPanel content, Shadow shadow) {
         super(text);
         this.setFont(CustomFontLoader.loadFont("assets/font/Montserrat-Bold.ttf", 26f));
@@ -31,6 +31,7 @@ public class QuestionButton extends Button implements ActionListener {
         return this.isActive;
     }
 
+    // Responds to the button being pressed
     @Override
     public void actionPerformed(ActionEvent e) {
         this.isActive = !this.isActive;
@@ -47,6 +48,7 @@ public class QuestionButton extends Button implements ActionListener {
         this.repaint();
     }
 
+    // Paints the button with rounded corners when active
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
