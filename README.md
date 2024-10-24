@@ -1,4 +1,4 @@
-# Tappalka
+# Tapalka
 ## Overview
 Our team has developed an interactive game where users can play and earn tapping scores. The objective is to score a minimum of 30 points within 60 seconds to pass the threshold and earn a free spin in the Bravo Case from CS-2.
 
